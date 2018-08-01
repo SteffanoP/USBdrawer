@@ -7,9 +7,9 @@ except NameError:
     _input = input
 
 def start() :
-    print ("What is the port?(COM1 - COM16)")
+    print ("Qual é a porta?(COM1 - COM16)")
     port = input() #Port input
-    print ("What is the baudrate?")
+    print ("Qual é o baudrate?")
     baudrate = input() #baudrate input
     ser = serial.Serial(port=port, \
             baudrate=baudrate,\
@@ -17,12 +17,11 @@ def start() :
             stopbits=serial.STOPBITS_ONE,\
             bytesize=serial.EIGHTBITS,\
             timeout=4) #Serial Settings
-    print("Running on: " + ser.name) #Print the input port
+    print("Porta: " + ser.name) #Print the input port
     global data
     data = ser.read(28) #Reads the data and it length
 
 #Start
 start();
 while (data != 0) :
-    print("Data on the port")
     print(data)
